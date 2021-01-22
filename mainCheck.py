@@ -13,15 +13,17 @@ class PassCheck1:
         minimumChar = 8
 
         # added this in case the user adds spaces within their passwords
-        noSpacesPassword = password.replace(" ", "")
+        noSpacesPassword = password.replace(" ", "").lower()
 
         # by making all passwords lowercase makes it a bit easier to work with regex
-        regexPattern = re.search("[a-z][0-9]", noSpacesPassword.lower())
+        regexPattern = re.search("[a-z][0-9]", noSpacesPassword)
 
-        if len(regexPattern) < minimumChar:
+        if len(password) < minimumChar:
             print("Password is too short!")
-        elif regexPattern.isdigit():
+        elif password.isdigit():
             print("Your password needs at least one letter. C'mon!")
+        elif not regexPattern:
+            print("Password is missing a number!")
         else:
             print("Password looks good!")
 
