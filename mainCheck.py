@@ -1,12 +1,20 @@
 # regex library import
 import re
 
-userRoleInput = input("What role do you have? Type in 'admin' or 'normal' to continue ").lower()
-userRole = userRoleInput.replace(" ", "")
-userPassword = input("Enter password! Must contain at least 1 letter,\n 1 number and be at \n least 8 characters long: ").lower()
+while True:
+    try:
+        userRoleInput = input("What role do you have? Type in 'admin' or 'normal' to continue ").lower()
+        userRole = userRoleInput.replace(" ", "")
+        userPassword = input("Enter password! Must contain at least 1 letter,\n 1 number and be at \n least 8 "
+                             "characters long: ").lower()
 
-if userRole != 'admin':
-    print(userRole)
+        if userRole == 'admin' or 'normal':
+            print("Role and password have been received!")
+            break
+        else:
+            print("Invalid role! Please type in valid role")
+    except:
+        continue
 
 
 # iteration 1
@@ -14,6 +22,7 @@ class PassCheck1:
     def __init__(self, role, password):
         self.userRole = role
         self.password = password
+
 
     def normalUser(password):
         minimumChar = 8
@@ -25,13 +34,13 @@ class PassCheck1:
         regexPattern = re.search("[a-z][0-9]", noSpacesPassword)
 
         if len(password) < minimumChar:
-            print("Password is too short!")
+            print("Password is too short! Needs to be at least 8 characters long.")
         elif password.isdigit():
-            print("Your password needs at least one letter. C'mon!")
+            print("Your password needs at least one letter.")
         elif not regexPattern:
             print("Password is missing a number!")
         else:
-            print("Password looks good!")
+            print("Password is accepted!")
 
     def adminUser(password):
         minimumChar = 13
@@ -50,10 +59,6 @@ class PassCheck1:
             print("Password is missing a number!")
         else:
             print("Password looks good!")
-
-
-
-
 
 
 
