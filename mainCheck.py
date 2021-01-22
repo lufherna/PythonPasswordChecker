@@ -1,22 +1,22 @@
 # regex library import
 import re
 
-def grabUserInputs():
-    userRole = input("What role do you have? Type in 'admin' or 'normal' to continue ")\
-        .lower().replace(" ", "")
-    userPassword = input("Enter password! Must contain at least 1 letter, 1 number and be at "
-                         "least 8 "
-                         "characters long: ").lower().replace(" ", "")
-    
+userRole = None
+userPassword = None
 
-    # if userRole == 'admin' or 'normal':
-    #     print("Role and password have been received!")
-    #     break
-    # else:
-    #     print("Invalid role! Please type in valid role")
+while True:
+  userRole = input("What role do you have? Type 'admin' or 'normal' to continue: ").lower().replace(" ", "")
+
+  if userRole in ('admin', 'normal'):
+    print("User role is accepted")
+    userPassword = input("Enter password! Must contain at least 1 letter, 1 number and be at least 8 characters long: ").lower().replace(" ", "")
+    break
+  else:
+    print("Incorrect user role :(")
+    continue
 
 
-# iteration 1
+# Password Check Class
 class PassCheck1:
     def __init__(self, role, password):
         self.userRole = role
@@ -27,7 +27,7 @@ class PassCheck1:
         minimumChar = 8
 
         #  using re.search in order to make sure the given password has the necessary characters
-        regexPattern = re.search("[a-z][0-9]", noSpacesPassword)
+        regexPattern = re.search("[a-z][0-9]", password)
 
         if len(password) < minimumChar:
             print("Password is too short! Needs to be at least 8 characters long.")
@@ -58,4 +58,4 @@ class PassCheck1:
 
 
 
-firstUserCheck = PassCheck1(userRole,userPassword)
+
