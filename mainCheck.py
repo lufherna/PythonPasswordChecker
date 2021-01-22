@@ -18,10 +18,9 @@ while True:
 
 # Password Check Class
 class PassCheck1:
-    def __init__(self, role, password):
-        self.userRole = role
-        self.password = password
-
+    # def __init__(self, role, password):
+    #     self.userRole = role
+    #     self.password = password
 
     def normalUser(password):
         minimumChar = 8
@@ -41,11 +40,8 @@ class PassCheck1:
     def adminUser(password):
         minimumChar = 13
 
-        # added this in case the user adds spaces within their passwords
-        noSpacesPassword = password.replace(" ", "")
-
         #  using re.search in order to make sure the given password has the necessary characters
-        regexPattern = re.search("[a-z][0-9]", noSpacesPassword)
+        regexPattern = re.search("[a-z][0-9]", password)
 
         if len(password) < minimumChar:
             print("Password is too short!")
@@ -56,6 +52,14 @@ class PassCheck1:
         else:
             print("Password looks good!")
 
+# conditional statement that'll call a method depending on the user role
+if userRole == 'admin':
+    adminUser = PassCheck1.adminUser(userPassword)
+    print(adminUser)
+
+elif userRole == 'normal':
+    normalUser = PassCheck1.normalUser(userPassword)
+    print(normalUser)
 
 
 
