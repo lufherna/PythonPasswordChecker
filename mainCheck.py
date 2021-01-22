@@ -1,6 +1,7 @@
 # regex library import
 import re
 
+userRole = input("What role do you have? Type in 'admin' or 'normal' to continue ")
 userPassword = input("Enter password! Must contain at least 1 letter, 1 number and be at least 8 characters long: ")
 
 
@@ -26,16 +27,6 @@ class PassCheck1:
             print("Password is missing a number!")
         else:
             print("Password looks good!")
-
-
-        # if regexPattern and len(password) >= minimumChar:
-        #     print("Password looks good!")
-        # elif len(password) < minimumChar:
-        #     print("Password is too short!")
-        # elif password.isdigit():
-        #     print("Your password needs at least one letter in it")
-        # else:
-        #     print("Password is missing required characters")
 
 
 firstUserCheck = PassCheck1.regexSearch(userPassword)
