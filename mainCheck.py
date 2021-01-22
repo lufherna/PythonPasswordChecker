@@ -17,10 +17,23 @@ class PassCheck1:
 
         # by making all passwords lowercase makes it a bit easier to work with regex
         regexPattern = re.search("[a-z][0-9]", noSpacesPassword.lower())
-        if regexPattern and len(password) >= minimumChar:
-            print("Password looks good!")
+
+        if len(regexPattern) < minimumChar:
+            print("Password is too short!")
+        elif regexPattern.isdigit():
+            print("Your password needs at least one letter. C'mon!")
         else:
-            print("Password is missing required characters")
+            print("Password looks good!")
+
+
+        # if regexPattern and len(password) >= minimumChar:
+        #     print("Password looks good!")
+        # elif len(password) < minimumChar:
+        #     print("Password is too short!")
+        # elif password.isdigit():
+        #     print("Your password needs at least one letter in it")
+        # else:
+        #     print("Password is missing required characters")
 
 
 firstUserCheck = PassCheck1.regexSearch(userPassword)

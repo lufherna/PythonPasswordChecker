@@ -1,0 +1,7 @@
+This is a basic password checker built using python to see and using the Python Regex library in order
+to use it to check if the input passwords contain specific characters.
+
+In order to run the script all you need to do is:
+ 1. Go to the project directory within a Terminal
+ 2. Type in 'python3 mainCheck.py'
+ 3. Then follow the on screen instructions
