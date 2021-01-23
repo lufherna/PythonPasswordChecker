@@ -3,6 +3,8 @@ import re
 
 userRole = None
 userPassword = None
+normalUserMinimumChar = 10
+adminUserMinimumChar = 13
 
 while True:
   userRole = input("What role do you have? Type 'admin' or 'normal' to continue: ").lower().replace(" ", "")
@@ -16,20 +18,15 @@ while True:
     print("Incorrect user role :(")
     continue
 
-
 # Password Check Class
 class PassCheck1:
-    # def __init__(self, role, password):
-    #     self.userRole = role
-    #     self.password = password
 
     def normalUser(password):
-        minimumChar = 10
 
         #  using re.search in order to make sure the given password has the necessary characters
         regexPattern = re.search("[a-z0-9]", password)
 
-        if len(password) < minimumChar:
+        if len(password) < normalUserMinimumChar:
             print("Password is too short! Needs to be at least 8 characters long.")
         elif password.isdigit():
             print("Your password needs at least one letter.")
@@ -39,21 +36,34 @@ class PassCheck1:
             print("Password is accepted!")
 
     def adminUser(password):
-        minimumChar = 13
+
+        specialCharCount = 0
+
+        specialCharacters = ['@', '!', '#', '$', '%', '^', '&', '*']
 
         #  using re.search in order to make sure the given password has the necessary characters
         regexPattern = re.search("[a-z0-9][@!#$%^&*]", password)
+
         # used regex search to grab the specific info regarding numbers inside the password
+        # \d returns a match where the string contains digits (numbers from 0-9)
         hasNumber = re.search(r'\d', password)
 
+        # trying to iterate through the password to find and count the special characters
+        for char in password:
+            if char in specialCharacters:
+                specialCharCount += 1
+
+
         # checks minimum length
-        if len(password) < minimumChar:
+        if len(password) < adminUserMinimumChar:
             print("Password is too short! Needs to be at least 13 characters long")
         # checks if password is only numbers
         elif password.isdigit():
             print("Your password needs at least one letter!")
         elif not hasNumber:
             print("Your password needs at least one number!")
+        elif specialCharCount < 3:
+            print("Your password is missing some special characters. You need at least 3")
         elif not regexPattern:
             print("Password is missing a special character!")
         else:
