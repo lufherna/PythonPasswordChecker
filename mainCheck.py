@@ -24,7 +24,7 @@ class PassCheck1:
     #     self.password = password
 
     def normalUser(password):
-        minimumChar = 8
+        minimumChar = 10
 
         #  using re.search in order to make sure the given password has the necessary characters
         regexPattern = re.search("[a-z0-9]", password)
