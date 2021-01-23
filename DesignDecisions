@@ -1,0 +1,12 @@
+This is a basic password checker built using python to see and using the Python Regex library in order
+to use it to check if the input passwords contain specific characters.
+
+Aside from meeting the requirements for this small project, i designed so it would be using vanilla Python. I wanted to make it easier to understand, therefore i added 
+comments on several parts to it that will help with anyone wanting to look at the code. 
+
+I used Regex in order to test the passwords along with some other validation (comparing the password to a list of characters)
+
+Definitely could be more DRY and there are a bit of places where things can be improved. There are places where functional Python programming would be ideal. 
+Would love to hear feedback from more experienced engineers to see what they have to say!
+
+Cheers!
